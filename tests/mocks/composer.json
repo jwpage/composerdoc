@@ -1,0 +1,13 @@
+{
+    "require": {
+        "composer/composer": "*@alpha"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.*@stable"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jwpage/Composerdoc": "src/Jwpage/"
+        }
+    }
+}
