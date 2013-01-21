@@ -129,8 +129,9 @@ class DumpCommand extends Command
         }
 
         $homepage = isset($package['homepage']) ? "<{$package['homepage']}>" : 'none';
+        $description = isset($package['description']) ? "{$package['description']}: " : '';
         $indent = str_repeat("    ", $indent);
-        $this->output->writeln("{$indent}* {$package['name']}: {$package['description']}: {$homepage}");
+        $this->output->writeln("{$indent}* {$package['name']}: {$description} {$homepage}");
     }
 
     /**
