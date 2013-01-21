@@ -1,6 +1,5 @@
 {
     "require": {
-        "composer/composer": "*@alpha",
         "symfony/console": "2.1.*@stable"
     },
     "require-dev": {
