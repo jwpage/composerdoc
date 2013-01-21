@@ -15,12 +15,9 @@ class DumpCommand extends Command
 
     protected function configure()
     {
-        $this->setName('dump')
-             ->setDescription('Dump the homepages of composer packages')
-             ->addArgument(
-                'package',
-                InputArgument::OPTIONAL
-            )
+        $this
+            ->setName('dump')
+            ->setDescription('Dump the homepages of composer packages')
             ->addOption(
                 'path',
                 null,
@@ -47,10 +44,16 @@ class DumpCommand extends Command
     {
         $this->output = $output;
 
-        $path = $input->getOption('path');
+        $path = realpath($input->getOption('path'));
         $dev  = $input->getOption('dev');
         $sub  = $input->getOption('sub');
 
+        if (!file_exists("$path/composer.json")) {
+            throw new \RuntimeException("Could not find composer.json in $path");
+        }
+        if (!file_exists("$path/composer.lock")) {
+            throw new \RuntimeException("Could not find composer.lock in $path");
+        }
         $jsonArray = json_decode(file_get_contents($path.'/composer.json'), true);
         $lockArray = json_decode(file_get_contents($path.'/composer.lock'), true);
 
