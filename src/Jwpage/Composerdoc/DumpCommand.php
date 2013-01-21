@@ -99,7 +99,7 @@ class DumpCommand extends Command
         $this->output->writeln("{$indent}* {$package['name']}: {$package['description']}: {$homepage}");
     }
 
-    public function findPackage($packageName, $isDev = false)
+    protected function findPackage($packageName, $isDev = false)
     {
         $flag = $isDev ? 'packages-dev' : 'packages';
         $packages = array_filter($this->lockArray[$flag], function($package) use ($packageName) {
