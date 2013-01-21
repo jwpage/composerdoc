@@ -3,7 +3,6 @@
 namespace Jwpage\Composerdoc;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -77,7 +76,7 @@ class DumpCommand extends Command
         foreach ($packages as $package) {
             $package = $this->findPackage($package, $isDev);
             $this->writePackage($package);
-            
+
             if ($showSubPackages) {
                 $required = array_keys($package['require']);
                 foreach ($required as $subPackage) {
@@ -91,6 +90,7 @@ class DumpCommand extends Command
     protected function writePackage($package, $indent = 0)
     {
         if (!$package) { // probably "php" requirement
+
             return;
         }
 
@@ -105,6 +105,7 @@ class DumpCommand extends Command
         $packages = array_filter($this->lockArray[$flag], function($package) use ($packageName) {
             return $packageName == $package['name'];
         });
+
         return array_pop($packages);
     }
 }

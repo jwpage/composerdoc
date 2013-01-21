@@ -38,7 +38,7 @@ class DumpCommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertContains('composer/composer', $this->tester->getDisplay());
         $this->assertNotContains('justinrainbow/json-schema', $this->tester->getDisplay());
-        $this->assertNotContains('Dev Packages', $this->tester->getDisplay());  
+        $this->assertNotContains('Dev Packages', $this->tester->getDisplay());
     }
 
     public function testDumpWithDev()
