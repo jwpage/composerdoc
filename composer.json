@@ -24,5 +24,6 @@
         "psr-0": {
             "Jwpage\\Composerdoc": "src/"
         }
-    }
+    },
+    "bin": [ "bin/composerdoc" ]
 }
