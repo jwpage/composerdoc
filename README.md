@@ -1,5 +1,8 @@
 # Composerdoc Command Line Utility
 
+[![Build Status](https://travis-ci.org/jwpage/composerdoc.png)](https://travis-ci.
+org/jwpage/composerdoc)
+
 Composerdoc is a tool that allows you to dump a listing of the required packages
 within your project to a markdown format for documentation purposes.
 
@@ -53,7 +56,7 @@ Dev Packages
     * phpunit/phpunit-mock-objects: Mock Object library for PHPUnit: <https://github.com/sebastianbergmann/phpunit-mock-objects/>
     * symfony/yaml: Symfony Yaml Component: <http://symfony.com>
 
-## Running Test
+## Running Tests
 
 First, install PHPUnit with `composer.phar install --dev`, then run 
 `./vendor/bin/phpunit`.
