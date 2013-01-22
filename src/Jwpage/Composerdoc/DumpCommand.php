@@ -79,9 +79,11 @@ class DumpCommand extends Command
             $output->writeln("Required Packages\n");
         }
 
-        $this->dumpPackages($jsonArray['require'], $sub);
+        if (isset($jsonArray['require'])) {
+            $this->dumpPackages($jsonArray['require'], $sub);
+        }
 
-        if ($dev) {
+        if ($dev && isset($jsonArray['require-dev'])) {
             $output->writeln("\nDev Packages\n");
             $this->dumpPackages($jsonArray['require-dev'], $sub, true);
         }
@@ -97,19 +99,15 @@ class DumpCommand extends Command
      * @param boolean $isDev whether this is a call for dev packages
      * @return void
      */
-    protected function dumpPackages($packages, $showSubPackages, $isDev = false)
+    protected function dumpPackages($packages, $showSubPackages, $isDev = false, $indent = 0)
     {
         $packages = array_keys($packages);
         foreach ($packages as $package) {
             $package = $this->findPackage($package, $isDev);
-            $this->writePackage($package);
+            $this->writePackage($package, $indent);
 
-            if ($showSubPackages) {
-                $required = array_keys($package['require']);
-                foreach ($required as $subPackage) {
-                    $subPackage = $this->findPackage($subPackage, $isDev);
-                    $this->writePackage($subPackage, 1);
-                }
+            if ($showSubPackages && isset($package['require'])) {
+                $this->dumpPackages($package['require'], false, $isDev, 1);
             }
         }
     }
