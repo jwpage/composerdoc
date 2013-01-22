@@ -97,6 +97,7 @@ class DumpCommand extends Command
      * @param boolean $showSubPackages whether to show subpackages (only goes
      * one level deep)
      * @param boolean $isDev whether this is a call for dev packages
+     * @param integer $indent depth of tab indentation
      * @return void
      */
     protected function dumpPackages($packages, $showSubPackages, $isDev = false, $indent = 0)
