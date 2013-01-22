@@ -123,7 +123,7 @@ class DumpCommand extends Command
      */
     protected function writePackage($package, $indent = 0)
     {
-        // If the package is not found, it's probably the "php" requirement.
+        // If the package is not found, it's probably the "php" or "ext" requirement.
         if (!$package) {
             return;
         }
@@ -131,7 +131,7 @@ class DumpCommand extends Command
         $homepage = isset($package['homepage']) ? "<{$package['homepage']}>" : 'none';
         $description = isset($package['description']) ? "{$package['description']}: " : '';
         $indent = str_repeat("    ", $indent);
-        $this->output->writeln("{$indent}* {$package['name']}: {$description} {$homepage}");
+        $this->output->writeln("{$indent}* __{$package['name']}__: {$description}{$homepage}");
     }
 
     /**
