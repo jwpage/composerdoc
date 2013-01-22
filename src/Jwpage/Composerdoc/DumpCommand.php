@@ -102,6 +102,8 @@ class DumpCommand extends Command
     protected function dumpPackages($packages, $showSubPackages, $isDev = false, $indent = 0)
     {
         $packages = array_keys($packages);
+        sort($packages);
+
         foreach ($packages as $package) {
             $package = $this->findPackage($package, $isDev);
             $this->writePackage($package, $indent);
