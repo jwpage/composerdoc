@@ -105,6 +105,7 @@ class DumpCommand extends Command
         $packages = array_keys($packages);
         sort($packages);
 
+        $this->output->writeln('<!--- composerdoc --->');
         foreach ($packages as $package) {
             $package = $this->findPackage($package, $isDev);
             $this->writePackage($package, $indent);
@@ -113,6 +114,7 @@ class DumpCommand extends Command
                 $this->dumpPackages($package['require'], false, $isDev, 1);
             }
         }
+        $this->output->writeln('<!--- /composerdoc --->');
     }
 
     /**
