@@ -19,13 +19,12 @@ and run it with the `--path` option.
 
 ## Usage
 
+### `composerdoc dump`
+
 To generate composerdoc output: 
 
-    ./vendor/bin/composerdoc
+    ./vendor/bin/composerdoc --path <path_to_composer.json_dir>
 
-To use a custom directory path: 
-    
-    ./vendor/bin/composerdoc --path <path_to_composer.json>
 To include dev requirements: 
 
     ./vendor/bin/composerdoc --dev
@@ -33,6 +32,22 @@ To include dev requirements:
 To include requirements of requirements: 
     
     ./vendor/bin/composerdoc --sub
+
+### `composerdoc check`
+
+You can use composerdoc to check if a README file has the latest composerdoc information.
+
+    ./vendor/bin/composerdoc --path <README.markdown>
+
+This command takes the same options as the `composerdoc dump` command.
+
+### `composerdoc update`
+
+You can also automatically update a README file with the latest composerdoc information in one command.
+
+    ./vendor/bin/composerdoc --path <README.markdown>
+
+This command takes the same options as the `composerdoc dump` command.
 
 ## Example Output
 
