@@ -1,5 +1,11 @@
 # CHANGELOG
 
+* 2.0.0 (2013-07-10)
+    * BREAKING: Format of composerdoc tags for `composerdoc dump` and 
+      `composerdoc update` have changed.
+      You will need to re-run `composerdoc dump` and re-insert into your README 
+      file before `composerdoc update` runs properly.
+
 * 1.1.1 (2013-07-10)
     * Support Symfony 2.3 components
 
