@@ -75,6 +75,7 @@ class DumpCommand extends Command
 
         $this->lockArray = $lockArray;
 
+        $output->writeln('<!--- composerdoc --->');
         if ($dev) {
             $output->writeln("Required Packages\n");
         }
@@ -87,6 +88,7 @@ class DumpCommand extends Command
             $output->writeln("\nDev Packages\n");
             $this->dumpPackages($jsonArray['require-dev'], $sub, true);
         }
+        $output->writeln('<!--- /composerdoc --->');
     }
 
     /**
@@ -105,7 +107,6 @@ class DumpCommand extends Command
         $packages = array_keys($packages);
         sort($packages);
 
-        $this->output->writeln('<!--- composerdoc --->');
         foreach ($packages as $package) {
             $package = $this->findPackage($package, $isDev);
             $this->writePackage($package, $indent);
@@ -114,7 +115,6 @@ class DumpCommand extends Command
                 $this->dumpPackages($package['require'], false, $isDev, 1);
             }
         }
-        $this->output->writeln('<!--- /composerdoc --->');
     }
 
     /**
